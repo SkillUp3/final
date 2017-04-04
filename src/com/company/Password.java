@@ -5,13 +5,13 @@ package com.company;
  */
 public class Password {
     private static final int key = 748576362;
-    private final int encryptedPassword;
+    public final int encryptedPassword;
 
     public Password(int password) {
         this.encryptedPassword = encryptDecrypt(password);
     }
 
-    private int  encryptDecrypt(int password) {
+    private final int  encryptDecrypt(int password) {
         return password ^ key;
         // 10 (1010) ^ 7 (0111) = 13 (1101)
         // 10 (1010) ^ 13 (1101) = 7 (0111)
@@ -21,7 +21,7 @@ public class Password {
         System.out.println("Saving password as " + this.encryptedPassword);
     }
 
-    public boolean letMeIn(int password) {
+    public final boolean letMeIn(int password) {
         if(encryptDecrypt(password) == this.encryptedPassword) {
             System.out.println("Welcome");
             return true;
